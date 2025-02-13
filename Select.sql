@@ -107,3 +107,34 @@ FROM lapss
 WHERE NOT synniaasta=2003
 GROUP by synniaasta
 -------------------------TABEL---------------------------------------------
+-- seotud tabel
+CREATE TABLE loom(
+loomID int PRIMARY KEY identity(1,1),
+loomNimi varchar(50),
+lapsID int,
+FOREIGN KEY (lapsID) REFERENCES lapss(lapsID)
+);
+INSERT INTO loom(loomNimi, lapsID)
+VALUES('kass Kott',1),
+('koer Bobik',1),
+('koer Tuzik',2),
+('kass Tuzik',3),
+('kass Mura',3),
+('kilpkonn', 3);
+
+SELECT * FROM loom;
+--select seotud tabelite põhjal
+SELECT * FROM loom, lapss;-- ei näita õiged arvud
+
+SELECT * FROm loom
+INNER JOIN lapss
+On loom.lapsID=lapss.lapsID;
+-- lihtne vaade 
+SELECT * FROM loom,lapss
+WHERE loom.lapsID=lapss.lapsID;
+----
+SELECT l.loomNimi, la.nimi, la.synniaasta
+FROM loom l,lapss la
+WHERE l.lapsID=la.lapsID;
+
+
