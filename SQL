@@ -1,0 +1,26 @@
+Create DATABASE AndreiBaas;
+
+Create Table lapss(
+lapsID int primary key identity(1,1),
+nimi varchar(10) not null,
+pikkus smallint,
+synniaasta smallint,
+synnilinn varchar(20)
+);
+SELECT * FROM lapss;
+
+INSERT INTO lapss(nimi,pikkus,synniaasta,synnilinn)
+VALUES
+('Kati','125','2003','Tallinn'),
+('Mati','145','2015','Tartu'),
+('sati','170','2017','Tallinn'),
+('Tati','190','2005','Tartu'),
+('Nuti','130','2013','Tallinn');
+
+Select nimi,pikkus
+From lapss
+ORDER by pikkus DESC;
+
+SELECT nimi,pikkus
+From lapss
+ORDER by pikkus DESC,nimi;
