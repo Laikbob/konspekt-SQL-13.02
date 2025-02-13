@@ -89,3 +89,21 @@ GROUP by synnilinn
 SELECT synniaasta, count(*) AS lasteARV
 FROM lapss
 GROUP by synniaasta;
+
+--HAVING --piirang juba grupeeritud andmete 
+-- keskmine pikkusiga synniaasta järgi
+SELECT synniaasta, AVG(pikkus) AS lasteARV
+FROM lapss
+GROUP by synniaasta
+HAVING AVG(pikkus)>150;
+
+SELECT synniaasta, AVG(pikkus) AS lasteARV
+FROM lapss
+WHERE synniaasta=2001
+GROUP by synniaasta
+
+SELECT synniaasta, AVG(pikkus) AS lasteARV
+FROM lapss
+WHERE NOT synniaasta=2003
+GROUP by synniaasta
+-------------------------TABEL---------------------------------------------
