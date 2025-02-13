@@ -16,7 +16,7 @@ VALUES
 ('sati','170','2017','Tallinn'),
 ('Tati','190','2005','Tartu'),
 ('Nuti','130','2013','Tallinn');
-
+-- Сортировка
 Select nimi,pikkus
 From lapss
 ORDER by pikkus DESC;
@@ -24,3 +24,44 @@ ORDER by pikkus DESC;
 SELECT nimi,pikkus
 From lapss
 ORDER by pikkus DESC,nimi;
+--lapsed, mis on sündinud peale 2005
+SELECT nimi, synniaasta
+FROM lapss
+WHERE synniaasta >=2005
+ORDER by nimi;
+--DISTINCT- näitab ainult 1 kords
+SELECT synniaasta
+FROM lapss
+WHERE synniaasta>2000;
+--BETWEEN
+--lapsed mis on sündinud(2000 kuni 2005)
+SELECT nimi,synniaasta
+FROM lapss
+WHERE synniaasta >=2000 AND synniaasta <=2005
+
+SELECT nimi,synniaasta
+FROM lapss
+WHERE synniaasta BETWEEN 2000 AND 2005;
+--LIKE
+-- näita lapsed, kelle nimi algab K
+-- % kõikvõimalikud sümboolid
+-- sisaldab K täht - '%K%'
+SELECT nimi
+FROM lapss
+WHERE nimi like 'K%';
+
+-- täpsem määratud tähtede arv _
+SELECT nimi
+FROM lapss
+WHERE nimi like '_a__;'--- Выбирает имя где 2 буква а 
+
+-- AND/ OR
+SELECT nimi
+FROM lapss
+WHERE nimi like 'K%'
+OR synnilinn like 'Tartu';
+
+SELECT nimi,synnilinn
+FROM lapss
+WHERE nimi like 'K%'
+AND synnilinn like 'Tartu';
