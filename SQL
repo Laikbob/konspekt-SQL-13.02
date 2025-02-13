@@ -65,3 +65,27 @@ SELECT nimi,synnilinn
 FROM lapss
 WHERE nimi like 'K%'
 AND synnilinn like 'Tartu';
+
+--Agreaatfunktioonid
+SUM, AVG, MIN, MAX, COUNT
+SELECT COUNT(nimi) AS 'laste Arv'
+FROM lapss;
+
+--Рост детей сумарный
+SELECT AVG(pikkus) AS 'keskmine pikkus'
+FROM lapss;
+-- Cумарный рост в Tallinn
+SELECT AVG(pikkus) AS 'keskmine pikkus'
+FROM lapss
+WHERE synnilinn='Tallinn';
+
+--näita keskmine pikkus linnade järgi
+-- GROUP by
+SELECT AVG(pikkus) AS 'keskmine pikkus', synnilinn
+FROM lapss
+GROUP by synnilinn
+
+--показать количесво детей разждёный в конкретном году
+SELECT synniaasta, count(*) AS lasteARV
+FROM lapss
+GROUP by synniaasta;
